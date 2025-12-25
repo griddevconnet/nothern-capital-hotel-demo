@@ -1,0 +1,280 @@
+import { Link } from 'react-router-dom';
+import { FaArrowRight, FaWifi, FaSwimmingPool, FaUtensils, FaParking, FaStar, FaQuoteLeft } from 'react-icons/fa';
+import React from 'react';
+
+const Home = () => {
+  const rooms = [
+    {
+      id: 1,
+      name: 'Single Suite',
+      description: 'Cozy and comfortable room with a single bed, perfect for solo travelers.',
+      price: 129,
+      image: '/images/room-single.jpg',
+      link: '/rooms/single-suite',
+    },
+    {
+      id: 2,
+      name: 'Standard Suite',
+      description: 'Spacious room with a queen-size bed, ideal for couples or business travelers.',
+      price: 189,
+      image: '/images/room-standard.jpg',
+      link: '/rooms/standard-suite',
+    },
+    {
+      id: 3,
+      name: 'Executive Suite',
+      description: 'Luxurious suite with a king-size bed and separate living area.',
+      price: 259,
+      image: '/images/room-executive.jpg',
+      link: '/rooms/executive-suite',
+    },
+  ];
+
+  const facilities = [
+    {
+      id: 1,
+      name: 'Conference Hall',
+      description: 'State-of-the-art conference facilities for your business needs.',
+      icon: <FaWifi className="text-4xl text-primary-600 mb-4" />,
+      link: '/facilities/conference',
+    },
+    {
+      id: 2,
+      name: 'Swimming Pool',
+      description: 'Relax and unwind in our temperature-controlled swimming pool.',
+      icon: <FaSwimmingPool className="text-4xl text-primary-600 mb-4" />,
+      link: '/facilities/pool',
+    },
+    {
+      id: 3,
+      name: 'Restaurant',
+      description: 'Experience fine dining with our exquisite menu and wine selection.',
+      icon: <FaUtensils className="text-4xl text-primary-600 mb-4" />,
+      link: '/facilities/restaurant',
+    },
+    {
+      id: 4,
+      name: 'Parking',
+      description: 'Secure parking available for all our guests.',
+      icon: <FaParking className="text-4xl text-primary-600 mb-4" />,
+      link: '/facilities/parking',
+    },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      name: 'John Doe',
+      role: 'Business Traveler',
+      content: 'The best hotel I\'ve stayed at in years. The service was impeccable and the rooms were spotless.',
+      rating: 5,
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      role: 'Tourist',
+      content: 'Amazing location and the staff went above and beyond to make our stay memorable.',
+      rating: 5,
+    },
+    {
+      id: 3,
+      name: 'Michael Johnson',
+      role: 'Event Organizer',
+      content: 'Perfect venue for our corporate event. The conference facilities are top-notch.',
+      rating: 4,
+    },
+  ];
+
+  return (
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center bg-gradient-to-br from-primary-900 to-primary-700 text-white">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container relative z-10 px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Experience Luxury <br className="hidden md:block" />
+            <span className="text-secondary-300">Redefined</span>
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl text-gray-100">
+            Discover the perfect blend of comfort and elegance at Northern Capital Hotel, where every stay is a memorable experience.
+          </p>
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <Link 
+              to="/book-now" 
+              className="bg-white text-primary-700 hover:bg-gray-100 px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center"
+            >
+              Book Your Stay
+            </Link>
+            <Link 
+              to="/rooms" 
+              className="border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 transform hover:scale-105 text-center"
+            >
+              Explore Rooms
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Rooms Section */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <span className="inline-block text-primary-600 font-semibold mb-3">ACCOMMODATION</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Luxury Redefined</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Experience the perfect blend of comfort and luxury in our beautifully appointed rooms and suites, designed to provide an unforgettable stay.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {rooms.map((room) => (
+              <div key={room.id} className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                <div className="h-64 overflow-hidden">
+                  <img
+                    src={room.image}
+                    alt={room.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <Link
+                      to={room.link}
+                      className="inline-flex items-center text-white font-medium text-lg"
+                    >
+                      View Details
+                      <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-2 duration-300" />
+                    </Link>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">{room.name}</h3>
+                  <p className="text-gray-600 mb-4">{room.description}</p>
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+                    <span className="text-2xl font-bold text-primary-600">${room.price}<span className="text-sm font-normal text-gray-500"> / night</span></span>
+                    <Link
+                      to={room.link}
+                      className="text-primary-600 hover:text-primary-800 font-medium flex items-center group-hover:text-primary-800"
+                    >
+                      Book Now
+                      <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1 duration-300" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-16">
+            <Link 
+              to="/rooms" 
+              className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold px-8 py-4 rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+            >
+              Explore All Accommodations
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Facilities Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container">
+          <div className="text-center mb-16">
+            <span className="inline-block text-primary-600 font-semibold mb-3">AMENITIES</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Facilities</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Discover our world-class amenities designed to enhance your stay and make your experience truly exceptional.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {facilities.map((facility) => (
+              <div key={facility.id} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center group">
+                <div className="w-20 h-20 mx-auto mb-6 bg-primary-50 rounded-full flex items-center justify-center group-hover:bg-primary-100 transition-colors duration-300">
+                  {React.cloneElement(facility.icon, { className: 'text-3xl text-primary-600' })}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{facility.name}</h3>
+                <p className="text-gray-600 mb-4">{facility.description}</p>
+                <Link 
+                  to={facility.link} 
+                  className="inline-flex items-center text-primary-600 hover:text-primary-800 font-medium group-hover:underline"
+                >
+                  Learn More
+                  <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1 duration-300" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <span className="inline-block text-primary-600 font-semibold mb-3">TESTIMONIALS</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Guest Experiences</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Don't just take our word for it. Here's what our guests have to say about their experience.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar 
+                      key={i} 
+                      className={`${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'} text-xl mr-1`} 
+                    />
+                  ))}
+                </div>
+                <div className="relative mb-6">
+                  <FaQuoteLeft className="text-gray-200 text-4xl absolute -top-2 -left-2" />
+                  <p className="text-gray-700 italic relative z-10">{testimonial.content}</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 font-bold text-lg mr-4">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-700 to-primary-900 text-white">
+        <div className="container text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready for an Unforgettable Stay?</h2>
+          <p className="text-xl mb-10 max-w-2xl mx-auto text-gray-100">
+            Book your stay today and experience the perfect blend of luxury and comfort at Northern Capital Hotel.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link 
+              to="/book-now" 
+              className="bg-white text-primary-700 hover:bg-gray-100 px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-block"
+            >
+              Book Your Stay
+            </Link>
+            <Link 
+              to="/contact" 
+              className="border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-block"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
