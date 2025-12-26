@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,10 +50,12 @@ INSTALLED_APPS = [
     'accounts',
     'rooms',
     'bookings',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,24 +88,42 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=not DEBUG,
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_USER_MODEL = 'accounts.User'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-]
+_cors_origins = os.getenv('CORS_ALLOWED_ORIGINS')
+if _cors_origins:
+    CORS_ALLOWED_ORIGINS = [o.strip() for o in _cors_origins.split(',') if o.strip()]
+else:
+    CORS_ALLOWED_ORIGINS = [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+    ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-]
+_csrf_trusted = os.getenv('CSRF_TRUSTED_ORIGINS')
+if _csrf_trusted:
+    CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_trusted.split(',') if o.strip()]
+else:
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+    ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -148,6 +169,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
