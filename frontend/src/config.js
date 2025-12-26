@@ -1,7 +1,7 @@
 export const APP_NAME = 'Northern Capital Hotel';
 export const APP_DESCRIPTION = 'Experience luxury and comfort at Northern Capital Hotel';
 
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 export const ROOM_TYPES = {
   SINGLE: 'single',
