@@ -108,7 +108,7 @@ const Home = () => {
   return (
     <div className="bg-white">
     {/* Hero Section */}
-    <section className="relative h-screen flex items-center justify-center bg-cover bg-center overflow-hidden">
+    <section className="relative h-screen flex items-start justify-center pt-28 md:pt-36 bg-cover bg-center overflow-hidden">
       <div className="absolute inset-0">
         <img 
           src={HeroImage}
@@ -145,10 +145,10 @@ const Home = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+          className="text-3xl md:text-5xl font-bold italic mb-6 leading-tight tracking-tight text-sky-300 drop-shadow"
         >
-          Experience Luxury <br className="hidden md:block" />
-          <span className="text-secondary-300">Redefined</span>
+          <span className="block">Experience Luxury</span>
+          <span className="block text-sky-400">Redefined</span>
         </motion.h1>
 
         <motion.p
