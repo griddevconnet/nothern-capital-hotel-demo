@@ -23,6 +23,8 @@ let focusableElements = [
   '[role="link"]:not([disabled])',
 ];
 
+import PlaceholderImage from '../assets/images/logo.png';
+
 export const trapFocus = (element) => {
   if (!element) return;
   
@@ -130,7 +132,7 @@ export const getImageProps = (src, alt, { className = '', ...rest } = {}) => ({
   'aria-hidden': alt ? 'false' : 'true',
   onError: (e) => {
     e.target.onerror = null;
-    e.target.src = '/images/placeholder.jpg'; // Fallback image
+    e.target.src = PlaceholderImage; // Fallback image
   },
   ...rest
 });

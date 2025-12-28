@@ -12,6 +12,8 @@ import './datepicker-fix.css'; // z-index fix for calendar popup
 import { bookingsAPI, roomsAPI } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 
+import Executive1 from '../assets/images/executive1.jpeg';
+
 const BookNow = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -33,16 +35,16 @@ const BookNow = () => {
   });
 
   const fallbackRooms = [
-    { id: 1, name: 'Deluxe Room', price: 199, image: '/images/deluxe-room.jpg' },
-    { id: 2, name: 'Executive Suite', price: 299, image: '/images/executive-suite.jpg' },
-    { id: 3, name: 'Presidential Suite', price: 499, image: '/images/presidential-suite.jpg' },
+    { id: 1, name: 'Deluxe Room', price: 199, image: Executive1 },
+    { id: 2, name: 'Executive Suite', price: 299, image: Executive1 },
+    { id: 3, name: 'Presidential Suite', price: 499, image: Executive1 },
   ];
 
   const rooms = useMemo(() => {
     const list = Array.isArray(roomsData) && roomsData.length ? roomsData : fallbackRooms;
     return list.map((r) => ({
       ...r,
-      image: r.image || '/src/assets/images/executive1.jpeg',
+      image: r.image || Executive1,
     }));
   }, [roomsData]);
 

@@ -5,6 +5,11 @@ import {
     FaRegClock,
     FaPhone,
   } from "react-icons/fa";
+
+  import Standard1 from "../assets/images/standard1.jpeg";
+  import Standard2 from "../assets/images/standard2.jpeg";
+  import Executive1 from "../assets/images/executive1.jpeg";
+  import Executive2 from "../assets/images/executive2.jpeg";
   
   const Dining = () => {
     const restaurants = [
@@ -14,7 +19,7 @@ import {
         hours: "6:30 AM - 11:00 PM",
         description:
           "Experience a culinary journey with our international buffet featuring live cooking stations and a wide variety of global cuisines.",
-        image: "/src/assets/images/restaurant1.jpg",
+        image: Standard1,
       },
       {
         name: "La Bella Vista",
@@ -22,7 +27,7 @@ import {
         hours: "5:30 PM - 11:00 PM",
         description:
           "Authentic Italian cuisine in an elegant setting with panoramic views of the city. Our chef prepares traditional dishes with the finest ingredients imported from Italy.",
-        image: "/src/assets/images/restaurant2.jpg",
+        image: Standard2,
       },
       {
         name: "The Lobby Lounge",
@@ -30,7 +35,7 @@ import {
         hours: "10:00 AM - 12:00 AM",
         description:
           "Relax in our sophisticated lounge while enjoying premium teas, cocktails, and light bites throughout the day. Live piano music in the evenings.",
-        image: "/src/assets/images/lounge1.jpg",
+        image: Executive1,
       },
       {
         name: "Sakura",
@@ -38,7 +43,7 @@ import {
         hours: "11:30 AM - 10:30 PM",
         description:
           "Experience the art of Japanese cuisine with our master chefs preparing sushi, sashimi, and teppanyaki right before your eyes at our interactive dining counter.",
-        image: "/src/assets/images/restaurant3.jpg",
+        image: Executive2,
       },
     ];
   

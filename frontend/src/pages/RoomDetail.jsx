@@ -7,6 +7,14 @@ import {
 } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
+import Single1 from '../assets/images/single1.jpeg';
+import Single2 from '../assets/images/single2.jpeg';
+import Single3 from '../assets/images/single3.jpeg';
+import Standard1 from '../assets/images/standard1.jpeg';
+import Standard2 from '../assets/images/standard2.jpeg';
+import Executive1 from '../assets/images/executive1.jpeg';
+import Executive2 from '../assets/images/executive2.jpeg';
+
 import { roomsAPI } from '../services/api.js';
 
 // Mock data - replace with API call in real app
@@ -19,9 +27,9 @@ const roomData = {
     size: '25',
     maxOccupancy: 1,
     images: [
-      '/src/assets/images/single1.jpeg',
-      '/src/assets/images/single2.jpeg',
-      '/src/assets/images/single3.jpeg'
+      Single1,
+      Single2,
+      Single3
     ],
     amenities: [
       { icon: <FaWifi />, name: 'Free WiFi' },
@@ -38,8 +46,8 @@ const roomData = {
     size: '35',
     maxOccupancy: 2,
     images: [
-      '/src/assets/images/standard1.jpeg',
-      '/src/assets/images/standard2.jpeg'
+      Standard1,
+      Standard2
     ],
     amenities: [
       { icon: <FaWifi />, name: 'Free WiFi' },
@@ -57,8 +65,8 @@ const roomData = {
     size: '50',
     maxOccupancy: 2,
     images: [
-      '/src/assets/images/executive1.jpeg',
-      '/src/assets/images/executive2.jpeg'
+      Executive1,
+      Executive2
     ],
     amenities: [
       { icon: <FaWifi />, name: 'Free WiFi' },
@@ -100,12 +108,12 @@ export default function RoomDetail() {
   const imagesForRoom = (roomName) => {
     const name = (roomName || '').toLowerCase();
     if (name.includes('single')) {
-      return ['/src/assets/images/single1.jpeg', '/src/assets/images/single2.jpeg', '/src/assets/images/single3.jpeg'];
+      return [Single1, Single2, Single3];
     }
     if (name.includes('standard')) {
-      return ['/src/assets/images/standard1.jpeg', '/src/assets/images/standard2.jpeg'];
+      return [Standard1, Standard2];
     }
-    return ['/src/assets/images/executive1.jpeg', '/src/assets/images/executive2.jpeg'];
+    return [Executive1, Executive2];
   };
 
   const roomImages = useMemo(() => {

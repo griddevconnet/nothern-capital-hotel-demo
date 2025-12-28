@@ -3,6 +3,14 @@ import { FaArrowRight, FaWifi, FaSwimmingPool, FaUtensils, FaParking, FaStar, Fa
 import { motion } from 'framer-motion';
 import React from 'react';
 import DroneImage from '../assets/images/ChatGPT Image Oct 2, 2025, 01_13_25 PM.png';
+import HeroImage from '../assets/images/hero.png';
+import Single1 from '../assets/images/single1.jpeg';
+import Single2 from '../assets/images/single2.jpeg';
+import Single3 from '../assets/images/single3.jpeg';
+import Standard1 from '../assets/images/standard1.jpeg';
+import Standard2 from '../assets/images/standard2.jpeg';
+import Executive1 from '../assets/images/executive1.jpeg';
+import Executive2 from '../assets/images/executive2.jpeg';
 
 const Home = () => {
   const rooms = [
@@ -12,9 +20,9 @@ const Home = () => {
       description: 'Cozy and comfortable room with a single bed, perfect for solo travelers.',
       price: 129,
       images: [
-        '/src/assets/images/single1.jpeg',
-        '/src/assets/images/single2.jpeg',
-        '/src/assets/images/single3.jpeg'
+        Single1,
+        Single2,
+        Single3
       ],
       link: '/rooms/single-suite',
     },
@@ -24,8 +32,8 @@ const Home = () => {
       description: 'Spacious room with a queen-size bed, ideal for couples or business travelers.',
       price: 189,
       images: [
-        '/src/assets/images/standard1.jpeg',
-        '/src/assets/images/standard2.jpeg'
+        Standard1,
+        Standard2
       ],
       link: '/rooms/standard-suite',
     },
@@ -35,8 +43,8 @@ const Home = () => {
       description: 'Luxurious suite with a king-size bed and separate living area.',
       price: 259,
       images: [
-        '/src/assets/images/executive1.jpeg',
-        '/src/assets/images/executive2.jpeg'
+        Executive1,
+        Executive2
       ],
       link: '/rooms/executive-suite',
     },
@@ -103,7 +111,7 @@ const Home = () => {
     <section className="relative h-screen flex items-center justify-center bg-cover bg-center overflow-hidden">
       <div className="absolute inset-0">
         <img 
-          src="/src/assets/images/hero.png"
+          src={HeroImage}
           alt="Luxury Resort Hotel" 
           className="w-full h-full object-cover"
         />

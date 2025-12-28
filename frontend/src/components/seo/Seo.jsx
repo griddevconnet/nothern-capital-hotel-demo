@@ -1,18 +1,22 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
+import OgImage from '../../assets/images/hero.png';
+import LogoImage from '../../assets/images/logo.png';
+
 const Seo = ({ 
   title = 'Northern Capital Hotel | Luxury Accommodations', 
   description = 'Experience luxury and comfort at Northern Capital Hotel. Book your stay with us for an unforgettable experience.',
   keywords = 'hotel, luxury, accommodation, booking, northern capital, vacation, travel',
-  image = '/images/og-image.jpg',
+  image,
   type = 'website',
   noIndex = false,
   children 
 }) => {
   const { pathname } = useLocation();
-  const siteUrl = process.env.REACT_APP_SITE_URL || 'https://northerncapitalhotel.com';
+  const siteUrl = import.meta.env.VITE_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://northerncapitalhotel.com');
   const canonicalUrl = `${siteUrl}${pathname}`;
+  const metaImage = image || OgImage;
   
   return (
     <Helmet>
@@ -30,14 +34,14 @@ const Seo = ({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={new URL(image, siteUrl).toString()} />
+      <meta property="og:image" content={new URL(metaImage, siteUrl).toString()} />
       
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={canonicalUrl} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={new URL(image, siteUrl).toString()} />
+      <meta property="twitter:image" content={new URL(metaImage, siteUrl).toString()} />
       
       {/* Additional structured data */}
       <script type="application/ld+json">
@@ -47,7 +51,7 @@ const Seo = ({
           name: 'Northern Capital Hotel',
           description: description,
           url: siteUrl,
-          logo: new URL('/logo.png', siteUrl).toString(),
+          logo: new URL(LogoImage, siteUrl).toString(),
           address: {
             '@type': 'PostalAddress',
             streetAddress: '123 Luxury Avenue',

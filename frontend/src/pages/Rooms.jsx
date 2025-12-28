@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { roomsAPI } from "../services/api.js";
+import Single1 from "../assets/images/single1.jpeg";
+import Standard1 from "../assets/images/standard1.jpeg";
+import Executive1 from "../assets/images/executive1.jpeg";
 import {
   FaBed,
   FaRuler,
@@ -24,7 +27,7 @@ const rooms = [
     price: 129,
     size: "25",
     maxOccupancy: 1,
-    image: "/src/assets/images/single1.jpeg",
+    image: Single1,
     amenities: [
       { icon: <FaWifi />, name: "Free WiFi" },
       { icon: <FaTv />, name: "Smart TV" },
@@ -40,7 +43,7 @@ const rooms = [
     price: 189,
     size: "35",
     maxOccupancy: 2,
-    image: "/src/assets/images/standard1.jpeg",
+    image: Standard1,
     amenities: [
       { icon: <FaWifi />, name: "Free WiFi" },
       { icon: <FaTv />, name: "Smart TV" },
@@ -56,7 +59,7 @@ const rooms = [
     price: 259,
     size: "50",
     maxOccupancy: 2,
-    image: "/src/assets/images/executive1.jpeg",
+    image: Executive1,
     amenities: [
       { icon: <FaWifi />, name: "Free WiFi" },
       { icon: <FaTv />, name: "Smart TV" },
@@ -79,9 +82,9 @@ const Rooms = () => {
 
   const getImageForRoom = (roomName) => {
     const name = (roomName || "").toLowerCase();
-    if (name.includes("single")) return "/src/assets/images/single1.jpeg";
-    if (name.includes("standard")) return "/src/assets/images/standard1.jpeg";
-    return "/src/assets/images/executive1.jpeg";
+    if (name.includes("single")) return Single1;
+    if (name.includes("standard")) return Standard1;
+    return Executive1;
   };
 
   const iconForAmenity = (amenity) => {

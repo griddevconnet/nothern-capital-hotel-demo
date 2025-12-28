@@ -6,19 +6,28 @@ import {
   FaTimes,
 } from 'react-icons/fa';
 
+import HeroImage from '../assets/images/hero.png';
+import Single1 from '../assets/images/single1.jpeg';
+import Single2 from '../assets/images/single2.jpeg';
+import Standard1 from '../assets/images/standard1.jpeg';
+import Standard2 from '../assets/images/standard2.jpeg';
+import Executive1 from '../assets/images/executive1.jpeg';
+import Executive2 from '../assets/images/executive2.jpeg';
+import DroneImage2 from '../assets/images/ChatGPT Image Oct 2, 2025, 01_32_32 PM.png';
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const galleryImages = [
-    { id: 1, src: '/src/assets/images/gallery1.jpg', category: 'rooms', alt: 'Luxury Room' },
-    { id: 2, src: '/src/assets/images/gallery2.jpg', category: 'dining', alt: 'Restaurant' },
-    { id: 3, src: '/src/assets/images/gallery3.jpg', category: 'pool', alt: 'Swimming Pool' },
-    { id: 4, src: '/src/assets/images/gallery4.jpg', category: 'spa', alt: 'Spa & Wellness' },
-    { id: 5, src: '/src/assets/images/gallery5.jpg', category: 'events', alt: 'Event Space' },
-    { id: 6, src: '/src/assets/images/gallery6.jpg', category: 'lobby', alt: 'Luxury Lobby' },
-    { id: 7, src: '/src/assets/images/gallery7.jpg', category: 'bar', alt: 'Lounge Bar' },
-    { id: 8, src: '/src/assets/images/gallery8.jpg', category: 'view', alt: 'City View' },
+    { id: 1, src: Single1, category: 'rooms', alt: 'Single Suite' },
+    { id: 2, src: Single2, category: 'rooms', alt: 'Single Suite' },
+    { id: 3, src: Standard1, category: 'rooms', alt: 'Standard Suite' },
+    { id: 4, src: Standard2, category: 'rooms', alt: 'Standard Suite' },
+    { id: 5, src: Executive1, category: 'rooms', alt: 'Executive Suite' },
+    { id: 6, src: Executive2, category: 'rooms', alt: 'Executive Suite' },
+    { id: 7, src: HeroImage, category: 'view', alt: 'Hotel View' },
+    { id: 8, src: DroneImage2, category: 'lobby', alt: 'Hotel Lobby' },
   ];
 
   const categories = ['all', 'rooms', 'dining', 'pool', 'spa', 'events', 'lobby', 'bar', 'view'];

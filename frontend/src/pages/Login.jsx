@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/AuthContext.jsx";
 
+import Logo from "../assets/images/logo.png";
+
 const Login = () => {
   const { login, register, error: authError } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
@@ -86,7 +88,7 @@ const Login = () => {
             className="flex justify-center mb-6"
           >
             <img
-              src="/src/assets/images/logo.png"
+              src={Logo}
               alt="Hotel Logo"
               className="w-20 h-20 object-contain"
             />

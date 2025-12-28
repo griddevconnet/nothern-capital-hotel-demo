@@ -10,6 +10,10 @@ import {
   import { Link } from 'react-router-dom';
   import { bookingsAPI } from '../services/api.js';
   import { useAuth } from '../context/AuthContext.jsx';
+
+  import Single1 from '../assets/images/single1.jpeg';
+  import Standard1 from '../assets/images/standard1.jpeg';
+  import Executive1 from '../assets/images/executive1.jpeg';
   
   const MyBookings = () => {
     const { isAuthenticated } = useAuth();
@@ -51,9 +55,9 @@ import {
 
     const getImageForRoom = (roomName) => {
       const name = (roomName || '').toLowerCase();
-      if (name.includes('single')) return '/src/assets/images/single1.jpeg';
-      if (name.includes('standard')) return '/src/assets/images/standard1.jpeg';
-      return '/src/assets/images/executive1.jpeg';
+      if (name.includes('single')) return Single1;
+      if (name.includes('standard')) return Standard1;
+      return Executive1;
     };
   
     return (

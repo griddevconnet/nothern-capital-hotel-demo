@@ -1,3 +1,5 @@
+import HeroImage from '../assets/images/hero.png';
+
 const About = () => {
     return (
       <div className="min-h-screen bg-white">
@@ -51,7 +53,7 @@ const About = () => {
             <div className="relative h-96">
               <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/src/assets/images/hotel-exterior.jpg"
+                  src={HeroImage}
                   alt="Hotel Exterior"
                   className="w-full h-full object-cover transform hover:scale-105 transition duration-700"
                 />
